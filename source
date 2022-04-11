@@ -1,1 +1,41 @@
-print("hello")
+script.Parent = game:GetService("CoreGui").RobloxGui
+
+local invisdb = true
+local invis_on = false
+local Players = game:GetService("Players")
+
+function Invis()
+    if not invisdb then
+        return
+    end
+    invisdb = false
+    invis_on = not invis_on
+    if invis_on then
+        local savedpos = Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+        wait()
+       Players.LocalPlayer.Character:MoveTo(Vector3.new(-25.95, 84, 3537.55))
+        wait(.15)
+        local Seat = Instance.new("Seat", workspace)
+        Seat.Anchored = false
+        Seat.CanCollide = false
+        Seat.Name = "simplex"
+        Seat.Transparency = 1
+        Seat.Position = Vector3.new(-25.95, 84, 3537.55)
+        local Weld = Instance.new("Weld", Seat)
+        Weld.Part0 = Seat
+        Weld.Part1 = Players.LocalPlayer.Character.HumanoidRootPart
+        wait()
+        Seat.CFrame = savedpos
+    else
+        workspace:FindFirstChild("simplex"):Remove()
+    end
+    invisdb = true
+end
+
+local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
+
+Mouse.KeyDown:Connect(function(key)
+    if key:lower() == "-" then
+        Invis()
+    end
+end)

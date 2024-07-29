@@ -1,4 +1,4 @@
-script.Parent = game:GetService("CoreGui").RobloxGui
+script.Parent = game:GetService("Players").LocalPlayer.PlayerGui
 
 local invisdb = true
 local invis_on = false

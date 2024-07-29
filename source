@@ -35,7 +35,7 @@ end
 local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
 
 Mouse.KeyDown:Connect(function(key)
-    if key:lower() == "-" then
+    if key:lower() == "v" then
         Invis()
     end
 end)
